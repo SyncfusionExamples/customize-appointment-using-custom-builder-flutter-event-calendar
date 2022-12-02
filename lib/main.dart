@@ -2,34 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-void main() => runApp(AppointmentBuilder());
+void main() => runApp(const AppointmentBuilder());
 
 class AppointmentBuilder extends StatelessWidget{
+  const AppointmentBuilder({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
             child: SfCalendar(
-          view: CalendarView.week,
-          allowedViews: <CalendarView>[
-            CalendarView.day,
-            CalendarView.workWeek,
-            CalendarView.week,
-            CalendarView.month,
-            CalendarView.timelineDay,
-            CalendarView.timelineWeek,
-            CalendarView.timelineWorkWeek,
-            CalendarView.timelineMonth,
-            CalendarView.schedule
-          ],
-          dataSource: _getCalendarDataSource(),
-          monthViewSettings: MonthViewSettings(showAgenda: true),
-          timeSlotViewSettings:
-              TimeSlotViewSettings(timelineAppointmentHeight: 100),
-          appointmentBuilder: appointmentBuilder,
-        )),
+              view: CalendarView.week,
+              allowedViews: const <CalendarView>[
+                CalendarView.day,
+                CalendarView.workWeek,
+                CalendarView.week,
+                CalendarView.month,
+                CalendarView.timelineDay,
+                CalendarView.timelineWeek,
+                CalendarView.timelineWorkWeek,
+                CalendarView.timelineMonth,
+                CalendarView.schedule
+              ],
+              dataSource: _getCalendarDataSource(),
+              monthViewSettings: const MonthViewSettings(showAgenda: true),
+              timeSlotViewSettings:
+              const TimeSlotViewSettings(timelineAppointmentHeight: 100),
+              appointmentBuilder: appointmentBuilder,
+            )),
       ),
     );
   }
@@ -37,16 +39,18 @@ class AppointmentBuilder extends StatelessWidget{
   _AppointmentDataSource _getCalendarDataSource() {
     List<Appointment> appointments = <Appointment>[];
 
+    DateTime date = DateTime.now();
+
     appointments.add(Appointment(
       startTime: DateTime(
-        2020,
-        12,
-        15,
+        date.year,
+        date.month,
+        date.day,
         7,
         0,
         0,
       ),
-      endTime: DateTime(2020, 12, 15, 11, 0, 0),
+      endTime: DateTime(date.year, date.month, date.day, 11, 0, 0),
       subject: 'Meeting',
       color: Colors.pink,
     ));
@@ -63,7 +67,7 @@ class AppointmentBuilder extends StatelessWidget{
             width: calendarAppointmentDetails.bounds.width,
             height: calendarAppointmentDetails.bounds.height / 2,
             color: appointment.color,
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.group,
                 color: Colors.black,
@@ -74,11 +78,8 @@ class AppointmentBuilder extends StatelessWidget{
           height: calendarAppointmentDetails.bounds.height / 2,
           color: appointment.color,
           child: Text(
-            appointment.subject +
-                DateFormat(' (hh:mm a').format(appointment.startTime) +
-                '-' +
-                DateFormat('hh:mm a)').format(appointment.endTime),
-            textAlign: TextAlign.center,style: TextStyle(fontSize: 10),
+            '${appointment.subject}${DateFormat(' (hh:mm a').format(appointment.startTime)}-${DateFormat('hh:mm a)').format(appointment.endTime)}',
+            textAlign: TextAlign.center,style: const TextStyle(fontSize: 10),
           ),
         )
       ],
