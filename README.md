@@ -6,6 +6,8 @@ Using the [appointmentBuilder](https://pub.dev/documentation/syncfusion_flutter_
 
 By using the [CalendarAppointmentDetails](https://pub.dev/documentation/syncfusion_flutter_calendar/latest/calendar/CalendarAppointmentDetails-class.html) , you can get the details about appointment view in the calendar.
 
+![AppointmentBuilder](https://user-images.githubusercontent.com/46158936/206426439-fd1ea919-5dc6-474a-8ff7-609fbe059f99.gif)
+
 You can also refer to our UG documenatation to know more about [AppointmentBuilder](https://help.syncfusion.com/flutter/calendar/builders#appointment-builder)
 
 ## Requirements to run the demo
