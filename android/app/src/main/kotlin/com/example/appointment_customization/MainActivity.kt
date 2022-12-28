@@ -1,4 +1,4 @@
-package com.example.appointment_custombuilder
+package com.example.appointment_customization
 
 import io.flutter.embedding.android.FlutterActivity
 
